@@ -1,0 +1,11 @@
+{
+  "name": "react-heaven",
+  "version": "1.0.0",
+  "description": "Thiis is npm for react heaven",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Girish P",
+  "license": "ISC"
+}
