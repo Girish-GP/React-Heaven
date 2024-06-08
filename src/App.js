@@ -27,9 +27,12 @@
         </div>
      </div> */
 
+
+ import React from "react";    
+ import ReactDOM from "react-dom/client"
      const parent = React.createElement("div",{
         id: 'parent'
-     },[React.createElement("div",{id:"child"},[React.createElement("h1",{},"Hello nested tree using react"),React.createElement("h1",{},"Hi i am sibling")]),React.createElement("div",{id:"child2"},[React.createElement("h1",{},"Hello nested tree using react 2"),React.createElement("h1",{},"Hi i am sibling 2")])]);
+     },[React.createElement("div",{id:"child"},[React.createElement("h1",{},"Hello   react"),React.createElement("h1",{},"Hi i am sibling")]),React.createElement("div",{id:"child2"},[React.createElement("h1",{},"Hello nested tree using react 2"),React.createElement("h1",{},"Hi i am sibling 2")])]);
 
     
      const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -43,6 +46,6 @@
   
 
 
-const parentDiv= React.createElement('div',{id:'parent-div'},React.createElement('p',{id:'para'},"This is para"))
+// const parentDiv= React.createElement('div',{id:'parent-div'},React.createElement('p',{id:'para'},"This is para"))
 
-root.render(parentDiv)
+// root.render(parentDiv)
