@@ -1,51 +1,50 @@
-// const root = document.getElementById('root');
+import React from "react"
+import ReactDOM from "react-dom/client"
 
-// const h2 = document.createElement("h2")
-// h2.innerHTML = "Hello World 2"
-// root.appendChild(h2)
+//React ELement
 
-// const heading = React.createElement("h1",{
-//     id: "heading" , xyz: "abc"
-// },"Hello world from react");
+const heading = React.createElement("h1",{id:'heading'},"HI i am react");
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(heading)
 
+//Jsx
 
-// root.render(heading)
+const jsxHeading = (<h1 id="heading" className="parent-class">
+        This is jsx heading
+        </h1>)
+// root.render(jsxHeading)
 
+console.log(heading,jsxHeading)
 
-// {} --> here we can give attributes to the tag
+//React Components
+//Class based components --- Old way of writing code
+//Functional based components --- new way of writing code
 
+const num1 = 100;
+//React Element 
+const para = <p>Hi i am react element</p>
+const insideOther = (
+        <p>{para}Hi i am other react element</p>
+)
+//React Component
 
-// console.log(heading,root)
-
-//How to create below structure in react
-//Nested structure in react
-/* <div id="parent">
-        <div id="child">
-<h1>Hello nested tree using react</h1>
+const Text = () => (
+        <div>
+                {num1+12222}
+                {console.log('rhiadfoaf')}
+                <p>Hi this is functional react component paragraph</p>
+                {/* <MyButton /> */}
         </div>
-        <h1>Hi i am sibling</h1>
-        </div>
-     </div> */
+)
 
+const MyButton = () => 
+        (
+               <div id="parent-div">
+                       <h1>Hi I am react button</h1>
+                       {insideOther}
+                       <Text /> {/* component composition */}
+                       {Text()}
+               </div>
+       )
 
- import React from "react";    
- import ReactDOM from "react-dom/client"
-     const parent = React.createElement("div",{
-        id: 'parent'
-     },[React.createElement("div",{id:"child"},[React.createElement("h1",{},"Hello   react"),React.createElement("h1",{},"Hi i am sibling")]),React.createElement("div",{id:"child2"},[React.createElement("h1",{},"Hello nested tree using react 2"),React.createElement("h1",{},"Hi i am sibling 2")])]);
-
-    
-     const root = ReactDOM.createRoot(document.getElementById("root"));
-
-     root.render(parent);
-
-     console.log(parent)
-
-
-//JSX
-  
-
-
-// const parentDiv= React.createElement('div',{id:'parent-div'},React.createElement('p',{id:'para'},"This is para"))
-
-// root.render(parentDiv)
+root.render(<MyButton />)

@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Thiis is npm for react heaven",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "author": "Girish P",
@@ -17,6 +19,6 @@
   },
   "browsersList": [
     "last 2 Chrome versions",
-    "last 2 versions"
+    "last 2 versions6"
   ]
 }
