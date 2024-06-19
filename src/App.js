@@ -765,7 +765,7 @@ const BodyComponent = () => (
                 <RestaurantCards2 resData={resList[7]}/>  */}
                 {
                         resList?.map((obj)=>{
-                              return  <RestaurantCards2 resData={obj}/>
+                              return  <RestaurantCards2 key={obj?.id} resData={obj}/>
                         })
                 }
               
