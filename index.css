@@ -72,7 +72,7 @@ ul{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 5rem;
+    gap: 1rem;
     padding: 2rem;
 }
 .res-cards img{
