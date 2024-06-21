@@ -93,4 +93,11 @@ ul{
     align-items: center;
     justify-content: space-between;
 }
-
+.filter-btn{
+    background-color: aqua;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    padding: 1rem;
+    cursor: pointer;
+}
