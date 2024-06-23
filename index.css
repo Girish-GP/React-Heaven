@@ -50,16 +50,36 @@ ul{
 }
 .res-search{
     margin-top: 50px;
-    width: 500px;
-    height: 30px;
+    width: 400px;
+    border-radius: 40px;
+    height: 40px;
+    display: flex;
+   
+    background-color: white;
 }
-.res-search input{
-    width: 85%;
-    height: 93%;
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.res-search-input{
+    padding: 8px 0 8px 16px;
+    box-sizing: border-box;
+    width:336px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 40px 0 0 40px;
+}
+.res-search-input-main{
+   width: 90%;
+   border: none; 
 }
 .res-search button{
-    width: 13%;
-    height: 100%;
+   height: 40px;
+   width: 64px;
+   cursor: pointer;
+   border-radius: 0 40px 40px 0;
 }
 .res-cards{
     height: 350px;

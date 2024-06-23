@@ -1,142 +1,80 @@
 import { RestaurantCards } from "./RestuarantCards"
-import RestaurantCards2 from "./RestuarantCards"
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 import resList from "../utils/mock-json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //normal js variable
-let dataCopy2 = [
-  {
-    "info": {
-        "id": "151438",
-        "name": "Hot 'N' Spicy Besides Vani",
-        "cloudinaryImageId": "9e5acc6c48873d4383359c8df1e4e96e",
-
-        "cuisines": [
-            "Biryani",
-            "Chinese",
-            "Pizzas"
-        ],
-        "avgRating": 4.2,
-  
-        "sla": {
-  
-            "slaString": "10-15 mins",
-         
-        },
-      
-        
-    },
-    
-  },
-
-  {
-    "info": {
-        "id": "151438",
-        "name": "Burger King",
-        "cloudinaryImageId": "9e5acc6c48873d4383359c8df1e4e96e",
-
-        "cuisines": [
-            "Biryani",
-            "Chinese",
-            "Pizzas"
-        ],
-        "avgRating": 3.2,
-  
-        "sla": {
-  
-            "slaString": "10-15 mins",
-         
-        },
-      
-        
-    },
-    
-  },
-];
-
-//State Variable
-
-
-
+// let resList = []
 export const BodyComponent = () =>{
-  const [dataCopy,setDataCopy] = useState([
-    {
-      "info": {
-          "id": "151438",
-          "name": "Hot 'N' Spicy Besides Vani",
-          "cloudinaryImageId": "9e5acc6c48873d4383359c8df1e4e96e",
+
+  //Orginal Data State Variable 
+  const [data,setData] = useState(resList)
+  //State Variable
+  const [dataCopy,setDataCopy] = useState(data);
+
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(()=>{
+    fetchData()
+  },resList)
   
-          "cuisines": [
-              "Biryani",
-              "Chinese",
-              "Pizzas"
-          ],
-          "avgRating": 4.2,
-    
-          "sla": {
-    
-              "slaString": "10-15 mins",
-           
-          },
-        
-          
-      },
-      
-    },
-    {
-      "info": {
-          "id": "151438",
-          "name": "Burger King",
-          "cloudinaryImageId": "9e5acc6c48873d4383359c8df1e4e96e",
+  //Filter Top Restuarant Function
+  const filter = ()=>{
+      const temp = dataCopy?.filter((obj)=> Number(obj?.info?.avgRating) >= 4.3 );
+      setDataCopy(temp)
+     }
   
-          "cuisines": [
-              "Biryani",
-              "Chinese",
-              "Pizzas"
-          ],
-          "avgRating": 3.2,
-    
-          "sla": {
-    
-              "slaString": "10-15 mins",
-           
-          },
-        
-          
-      },
-      
-    },
-  ]);
+
+  const inputValueChange = (event) =>[
+   setInputValue(event.target.value)
+  ]
+
+  const handleIconClick = () => {
+    setDataCopy(data);
+    setInputValue('')
+  }
+  
+  //Search Function
+  const searchForRes = () => {
+    if(!inputValue){
+      setDataCopy(data);
+    } else {
+      const temp = dataCopy?.filter(obj =>obj?.info?.name?.replace(/\\s+/g,"")?.toLowerCase()?.includes(inputValue?.toLowerCase()));
+      setDataCopy(temp)
+  }
+}
+
+ const fetchData = async() => {
+  const data =await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+  const jsonData = await data.json()
+  resList = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  setData(resList);
+  setDataCopy(resList);
+  console.log(dataCopy)
+}
   return (
     <div id="app-body" className="main-body">
      <div className="res-search">
-        <input type="text"></input>
-       <button>Search</button> 
+        <div className="res-search-input">
+          <input className="res-search-input-main" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
+          {inputValue && (
+          <span className="cursor-pointer"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
+        
+      )}
+        </div>
+        <button onClick={searchForRes}><MaterialIcon icon="search" />
+       </button> 
      </div>
      <div className="filter">
-       <button className="filter-btn" onClick={()=>{
-        const temp = dataCopy?.filter((obj)=> Number(obj?.info?.avgRating) >= 4 );
-        setDataCopy(temp)
-       }}>Top Rated button</button>
+       <button className="filter-btn" onClick={filter}>Top Rated button</button>
        <button className="reset-btn" onClick={()=>{
-        setDataCopy(dataCopy)
+        setDataCopy(data)
        }}>Reset</button>
      </div>
      <div className="res-container">
-            {/* <RestaurantCards2 imgLink="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597" title="Nana bhau Hotel" rating="5" cusine="Ghar ka khana" time="5 hour"/>
-            <RestaurantCards2 imgLink="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/b318c0b4bc2169550145ace1d6e791a2" title="Nana bhau Hotel" rating="5" cusine="Ghar ka khana" time="5 hour"/>
-            <RestaurantCards2 imgLink="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597" title="Nana bhau Hotel" rating="5" cusine="Ghar ka khana" time="5 hour"/>
-            <RestaurantCards2 imgLink="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/rmlcifdqtpoxdrdvet2s" title="Nana bhau Hotel" rating="5" cusine="Ghar ka khana" time="5 hour"/>
-            <RestaurantCards2 imgLink="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597" title="Nana bhau Hotel" rating="5" cusine="Ghar ka khana" time="5 hour"/> */}
-            {/* <RestaurantCards2 resData={resList[0]}/> 
-            <RestaurantCards2 resData={resList[1]}/> 
-            <RestaurantCards2 resData={resList[2]}/> 
-            <RestaurantCards2 resData={resList[3]}/> 
-            <RestaurantCards2 resData={resList[4]}/> 
-            <RestaurantCards2 resData={resList[5]}/> 
-            <RestaurantCards2 resData={resList[6]}/> 
-            <RestaurantCards2 resData={resList[7]}/>  */}
-            {
-                    dataCopy?.map((obj)=>{
+
+            {       
+            
+                    dataCopy.map((obj)=>{
                           return  <RestaurantCards key={obj?.id} resData={obj}/>
                     })
             }
