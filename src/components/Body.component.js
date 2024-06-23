@@ -1,13 +1,14 @@
-import { RestaurantCards } from "./RestuarantCards"
+import { RestaurantCards } from "./RestuarantCards";
+import ShimmerComponent from "./Shimmer.component";
 import MaterialIcon, {colorPalette} from 'material-icons-react';
-import resList from "../utils/mock-json";
+// import resList from "../utils/mock-json";
 import { useState, useEffect } from "react";
 //normal js variable
 // let resList = []
 export const BodyComponent = () =>{
 
   //Orginal Data State Variable 
-  const [data,setData] = useState(resList)
+  const [data,setData] = useState([])
   //State Variable
   const [dataCopy,setDataCopy] = useState(data);
 
@@ -15,7 +16,7 @@ export const BodyComponent = () =>{
 
   useEffect(()=>{
     fetchData()
-  },resList)
+  },[])
   
   //Filter Top Restuarant Function
   const filter = ()=>{
@@ -46,14 +47,23 @@ export const BodyComponent = () =>{
  const fetchData = async() => {
   const data =await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
   const jsonData = await data.json()
-  resList = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-  setData(resList);
-  setDataCopy(resList);
+  setData(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  setDataCopy(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   console.log(dataCopy)
+} 
+
+const generateShimmer = ()=>{
+  let components = [];
+  for(let i=0;i<8;i++){
+    components.push(<ShimmerComponent key={i} />)
+  }
+  return components;
 }
-  return (
+
+//Conditional Rendering
+  return dataCopy?.length ? (
     <div id="app-body" className="main-body">
-     <div className="res-search">
+    <div className="res-search">
         <div className="res-search-input">
           <input className="res-search-input-main" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
           {inputValue && (
@@ -62,26 +72,36 @@ export const BodyComponent = () =>{
       )}
         </div>
         <button onClick={searchForRes}><MaterialIcon icon="search" />
-       </button> 
-     </div>
-     <div className="filter">
-       <button className="filter-btn" onClick={filter}>Top Rated button</button>
-       <button className="reset-btn" onClick={()=>{
+      </button> 
+    </div>
+    <div className="filter">
+      <button className="filter-btn" onClick={filter}>Top Rated button</button>
+      <button className="reset-btn" onClick={()=>{
         setDataCopy(data)
-       }}>Reset</button>
-     </div>
-     <div className="res-container">
+      }}>Reset</button>
+    </div>
+    <div className="res-container">
 
             {       
-            
+          
                     dataCopy.map((obj)=>{
                           return  <RestaurantCards key={obj?.id} resData={obj}/>
                     })
             }
           
-     </div>
     </div>
-)
+    </div>
+  ): (
+    <div className="main-body">
+       <div className="res-container">
+      
+        {
+         generateShimmer()
+        }
+       
+       </div> 
+    </div>
+  )
 }
 
 
