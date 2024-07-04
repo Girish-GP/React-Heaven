@@ -15,6 +15,7 @@ export const BodyComponent = () =>{
   const [inputValue, setInputValue] = useState('');
 
   useEffect(()=>{
+    console.log("Use effect called.")
     fetchData()
   },[])
   

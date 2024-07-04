@@ -18,9 +18,10 @@ export const HeaderComponent = () =>{
       </div>
       <div className="nav-items">
         <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Cart</li>
+               <a href="/"> <li>Home</li></a>
+               <a href="/about"> <li>About</li></a>
+               <a href="/contact-us"> <li>Contacts</li></a>
+               <a href="/cart"> <li>Cart</li></a>
 
         </ul>
         <button className="login-btn cursor-pointer" onClick={login}>{loginText}</button>
