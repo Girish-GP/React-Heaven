@@ -7,13 +7,14 @@ import FooterComponent from "./components/Footer.component"
 import AboutUsComponent from "./components/aboutUs.component";
 import ContactUsComponent from "./components/contactUs.component";
 import CardComponent from "./components/cart.component";
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
+import ErrorComponent from "./components/Error.component";
 const AppLayout = () => (
         <div id="app-layout">
           {/* Header */}
           <HeaderComponent />
-          {/* Body */}
-          <RouterProvider router={appRoutes} />
+          {/* Dynamic Rendering */}
+          <Outlet/>
           {/* Footer */}
           <FooterComponent />
         </div>
@@ -22,21 +23,38 @@ const AppLayout = () => (
 const appRoutes = createBrowserRouter([
   {
     path: "",
-    element: <BodyComponent/>
+    element: <AppLayout/>,
+    errorElement:<ErrorComponent/>,
+    children: [ 
+      {
+       path:"",
+       element:<BodyComponent/>
+      },
+      {
+      path: "/about",
+      element:<AboutUsComponent/>
+    },
+    {
+      path: "/contact-us",
+      element:<ContactUsComponent/>
+    },
+    {
+      path: "/cart",
+      element: <CardComponent/>
+    },
+  ]
   },
-  {
-    path: "/about",
-    element:<AboutUsComponent/>
-  },
-  {
-    path: "/contact-us",
-    element:<ContactUsComponent/>
-  },
-  {
-    path: "/cart",
-    element: <CardComponent/>
-  }
+ 
+  // {
+  //   path:"*",
+  //   element: <ErrorComponent/>,
+  // }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<AppLayout/>)
+root.render(<RouterProvider router={appRoutes} />)
+
+
+
+
+
