@@ -1,11 +1,18 @@
-import { CDN_URl } from "../utils/constants"
+import { useState } from "react";
+import { CDN_URl } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 export const RestaurantCards = (props) => {
-    const { cloudinaryImageId,name,avgRating,cuisines,sla} = props?.resData?.info
 
+    const navigateUrl = useNavigate();
+
+    const { id,cloudinaryImageId,name,avgRating,cuisines,sla} = props?.resData?.info;
+
+    console.log(id,props?.resData?.info)
      return(
      <div className="res-cards">
              <img src={CDN_URl+cloudinaryImageId}></img>
              <div className="res-cards-main-section">
+                
                      <p>{name}</p>
                      <p>{avgRating}<span>&#9734;</span> </p>
              </div>
@@ -15,6 +22,12 @@ export const RestaurantCards = (props) => {
              <div className="res-cards-main-section">
                      <p>{sla?.slaString}</p>
              </div>
+             <div className="view-btn-container">
+             <button className="login-btn cursor-pointer" key={id} onClick={() =>{
+       navigateUrl(`/restaurant/${id}`)
+    }}>View details {id}</button>
+             </div>
+             
      </div>
 )
 }

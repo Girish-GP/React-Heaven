@@ -7,9 +7,6 @@
     color: red;
 }
 
-#app-layout{
-   
-}
 
 .header{
     display: flex;
@@ -82,7 +79,7 @@ ul{
    border-radius: 0 40px 40px 0;
 }
 .res-cards{
-    height: 350px;
+    height: 400px;
     border-radius: 15px;
     width: 300px;
     background-color: rgba(208, 212, 211, 0.856);
@@ -146,4 +143,30 @@ ul{
 a{
     text-decoration: none;
     color: black;
+}
+.res-details-container{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.res-details{
+    height: 600px;
+    width: 600px;
+    border: 1px solid black;
+    padding: 2rem
+}
+.res-details-shimmer{
+    height: 300px;
+    width: 600px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.089);
+    box-shadow: 2px 2px 2px 2px black;
+}
+.view-btn-container{
+   display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+ 
 }

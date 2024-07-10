@@ -9,6 +9,7 @@ import ContactUsComponent from "./components/contactUs.component";
 import CardComponent from "./components/cart.component";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import ErrorComponent from "./components/Error.component";
+import RestuarantViewDetails from "./components/Restuarant.view.details.component";
 const AppLayout = () => (
         <div id="app-layout">
           {/* Header */}
@@ -42,6 +43,10 @@ const appRoutes = createBrowserRouter([
       path: "/cart",
       element: <CardComponent/>
     },
+    {
+      path:"/restaurant/:resId",
+      element: <RestuarantViewDetails/>
+    }
   ]
   },
  

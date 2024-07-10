@@ -1,5 +1,6 @@
 import { LOGO_URL } from "../utils/constants"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 let isLoggedIn = false;
 let tex = "Login"
 export const HeaderComponent = () =>{
@@ -18,10 +19,10 @@ export const HeaderComponent = () =>{
       </div>
       <div className="nav-items">
         <ul>
-               <a href="/"> <li>Home</li></a>
-               <a href="/about"> <li>About</li></a>
-               <a href="/contact-us"> <li>Contacts</li></a>
-               <a href="/cart"> <li>Cart</li></a>
+               <li><Link to="">Home</Link></li>
+               <li><Link to="/about">About</Link></li>
+               <li><Link to="/contact-us">Contacts</Link></li>
+               <li><Link to="/cart">Cart</Link></li>
 
         </ul>
         <button className="login-btn cursor-pointer" onClick={login}>{loginText}</button>

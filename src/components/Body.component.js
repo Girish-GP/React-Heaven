@@ -3,6 +3,8 @@ import ShimmerComponent from "./Shimmer.component";
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 // import resList from "../utils/mock-json";
 import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 //normal js variable
 // let resList = []
 export const BodyComponent = () =>{
@@ -13,7 +15,9 @@ export const BodyComponent = () =>{
   const [dataCopy,setDataCopy] = useState(data);
 
   const [inputValue, setInputValue] = useState('');
-
+  
+  const navigate = useNavigate();
+  
   useEffect(()=>{
     console.log("Use effect called.")
     fetchData()
@@ -82,11 +86,10 @@ const generateShimmer = ()=>{
       }}>Reset</button>
     </div>
     <div className="res-container">
-
             {       
           
                     dataCopy.map((obj)=>{
-                          return  <RestaurantCards key={obj?.id} resData={obj}/>
+                          return  <Link key={obj?.info?.id} to={"/restaurant/" + obj?.info?.id}><RestaurantCards  resData={obj}/></Link>
                     })
             }
           
