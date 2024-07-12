@@ -111,10 +111,29 @@ ul{
     gap: 1rem;
     padding: 2rem;
 }
-.res-cards img{
+.user_container_main{
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+    padding: 2rem
+}
+.user_container{
+    border: 1px solid black;
+    width: 250px;
+    height: 500px;
+    border-radius: 15px;
+
+}
+.res-cards img, .user_container img{
     height: 60%;
     width: 100%;
     border-radius: 15px;
+}
+.user-info{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 
