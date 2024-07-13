@@ -1,6 +1,21 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 
 const UserComponent = (props) =>{
+    useEffect(()=>{
+   ///Fetch initial data api call
+   this.interval = setInterval(()=>{
+    console.log("HI")
+   },1000);
+
+   //We cannot use async in useEffect whereas component Did Mount can be async
+   return ()=>{
+    //function called after the component is destroyed
+   }
+    },[name]);
+
+    useEffect(()=>{
+    /// fetch roles after after click
+    },[role])
     const [data,setData]=useState('2')
     const {name,userName,role} = props?.res;
     return (

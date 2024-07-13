@@ -4,8 +4,9 @@
 
 import React from "react";
 class UserClass extends React.Component{
-  constructor(){
-   super();
+  
+  constructor(props){
+   super(props);
    console.log("constructor called.",this.props?.res?.name)
    this.state = {
     name: 'Dummy',
@@ -24,10 +25,27 @@ class UserClass extends React.Component{
       name: jsonData?.name,
       userName: jsonData?.userName,
       role: jsonData?.bio
-    })
+    });
+    this.interval = setInterval(()=>{
+     console.log("HI")
+    },1000)
   }
 
- 
+ componentDidUpdate(prevProps,prevState){
+  if(this.state?.name !== prevState?.name){
+    //fetch data name call
+  }
+
+  if(this.state?.userName !== prevState?.userName){
+    //fetch userName
+  }
+  console.log("component did update",this.state?.name);
+ }
+
+ componentWillUnmount(){
+  // clearInterval(this.interval)
+  console.log("Component Will unmount",this.state?.name)
+ }
   
   render(){
     console.log("render function called.",this.props?.res?.name)
