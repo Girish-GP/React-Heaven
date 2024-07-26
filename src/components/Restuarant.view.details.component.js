@@ -1,22 +1,24 @@
-import {useState,useEffect} from "react"
 import { useParams } from "react-router-dom"
-import { RES_VIEW_URL } from "../utils/constants"
+import useResViewData from "../utils/useResViewData"
 const RestuarantViewDetails = () =>{
     
     const {resId} = useParams()
-    const [dataObj,setData]=useState(null);
-    console.log(dataObj)
-    useEffect(()=>{
-     fetchData();
-    },[])
+    // const [dataObj,setData]=useState(null);
 
-    const fetchData = async() =>{
-        const data = await fetch(`${RES_VIEW_URL}${resId}`);
-        const jsonData = await data.json();
-        setData(jsonData?.data?.cards)
-        console.log(dataObj);
+   const dataObj = useResViewData(resId) //custom hook which will fetch the data for specific restaurant
+
+    //Below used in custom hook
+    // useEffect(()=>{
+    //  fetchData();
+    // },[])
+
+    // const fetchData = async() =>{
+    //     const data = await fetch(`${RES_VIEW_URL}${resId}`);
+    //     const jsonData = await data.json();
+    //     setData(jsonData?.data?.cards)
+    //     console.log(dataObj);
         
-    }
+    // }
     if(dataObj === null) return (
         <div className="res-details-container">
          <div className="res-details-shimmer"></div>
