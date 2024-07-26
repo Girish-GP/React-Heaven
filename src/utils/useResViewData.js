@@ -8,9 +8,14 @@ const useResViewData = (id) => {
     },[])
 
     async function fetchData(){
-      const data = await fetch(`${RES_VIEW_URL}/${id}`)
-      const jsonData = await data?.json();
-      setresInfo(jsonData?.data?.cards)
+      try{
+        const data = await fetch(`${RES_VIEW_URL}/${id}`)
+        const jsonData = await data?.json();
+        setresInfo(jsonData?.data?.cards)
+      }catch(error){
+        console.log(error)
+      }
+      
     } 
    return resInfo;
 
