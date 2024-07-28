@@ -5,6 +5,8 @@ import MaterialIcon, {colorPalette} from 'material-icons-react';
 import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import { Link } from "react-router-dom";
+import ErrorComponent from "./Error.component";
+import useOnlineStatus from "../utils/useOnlineStatus";
 //normal js variable
 // let resList = []
 export const BodyComponent = () =>{
@@ -15,6 +17,8 @@ export const BodyComponent = () =>{
   const [dataCopy,setDataCopy] = useState(data);
 
   const [inputValue, setInputValue] = useState('');
+
+  let onlineStatus = useOnlineStatus();
   
   const navigate = useNavigate();
   
@@ -70,6 +74,9 @@ const generateShimmer = ()=>{
   return components;
 }
 
+if(!onlineStatus){
+  return <ErrorComponent/>
+}
 //Conditional Rendering
   return dataCopy?.length ? (
     <div id="app-body" className="main-body">
