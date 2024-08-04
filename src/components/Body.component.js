@@ -79,9 +79,9 @@ if(!onlineStatus){
 }
 //Conditional Rendering
   return dataCopy?.length ? (
-    <div id="app-body" className="main-body">
-    <div className="res-search">
-        <div className="res-search-input">
+    <div id="app-body" className="mt-8">
+    <div className="w-96 border-2 flex items-center align-middle">
+        <div className="w-96">
           <input className="res-search-input-main" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
           {inputValue && (
           <span className="cursor-pointer"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
