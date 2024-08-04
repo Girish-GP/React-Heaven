@@ -15,12 +15,12 @@ export const HeaderComponent = () =>{
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div id="app-header" className="header">
+    <div id="app-header" className="flex px-4 border-b-2 shadow-lg">
       <div className="logo-container">
-          <img className="logo" src={LOGO_URL}></img>
+          <img className="w-28" src={LOGO_URL}></img>
       </div>
-      <div className="nav-items">
-        <ul>   
+      <div className="flex items-center">
+        <ul className="flex justify-between gap-8">   
                <li>Online Status: {onlineStatus? 'Online' : 'Offline'}</li>
 
                <li><Link to="">Home</Link></li>
@@ -28,9 +28,9 @@ export const HeaderComponent = () =>{
                <li><Link to="/contact-us">Contacts</Link></li>
                <li><Link to="/cart">Cart</Link></li>
                <li><Link to="/grocery">Grocery</Link></li>
-
+               <li><button className="login-btn cursor-pointer" onClick={login}>{loginText}</button></li>
         </ul>
-        <button className="login-btn cursor-pointer" onClick={login}>{loginText}</button>
+       
       </div>
     </div>
   )
