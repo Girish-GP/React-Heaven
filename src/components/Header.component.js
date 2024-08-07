@@ -20,7 +20,7 @@ export const HeaderComponent = () =>{
           <img className="w-28 h-22" src={LOGO_URL}></img>
       </div>
       <div className="flex items-center">
-        <ul className="flex justify-between gap-12">   
+        <ul className="flex items-center justify-between gap-12">   
                <li>Online Status: {onlineStatus? 'Online' : 'Offline'}</li>
 
                <li><Link to="">Home</Link></li>
@@ -28,7 +28,7 @@ export const HeaderComponent = () =>{
                <li><Link to="/contact-us">Contacts</Link></li>
                <li><Link to="/cart">Cart</Link></li>
                <li><Link to="/grocery">Grocery</Link></li>
-               <li><button className="login-btn cursor-pointer" onClick={login}>{loginText}</button></li>
+               <li><button className="border-2 rounded-2xl bg-cyan-300 pt-1 pb-1 px-3 py-3 shadow-sm" onClick={login}>{loginText}</button></li>
         </ul>
        
       </div>
