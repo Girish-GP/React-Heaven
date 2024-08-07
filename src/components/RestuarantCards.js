@@ -9,21 +9,19 @@ export const RestaurantCards = (props) => {
 
     console.log(id,props?.resData?.info)
      return(
-     <div className="res-cards">
-             <img src={CDN_URl+cloudinaryImageId}></img>
-             <div className="res-cards-main-section">
+     <div className="w-72 h-[550px] bg-orange-100 rounded-3xl">
+             <img className="rounded-3xl h-11/12" src={CDN_URl+cloudinaryImageId}></img>
+             <div className="flex flex-col px-4 gap-1 mt-2">
                 
-                     <p>{name}</p>
-                     <p>{avgRating}<span>&#9734;</span> </p>
-             </div>
-             <div className="res-cards-main-section">
+                    <div className="flex justify-between"> 
+                        <p>{name}</p>                 
+                       <p>{avgRating}<span>&#9734;</span> </p>
+                       </div>
                      <p>{cuisines?.join(", ")}</p>
-             </div>
-             <div className="res-cards-main-section">
                      <p>{sla?.slaString}</p>
              </div>
-             <div className="view-btn-container">
-             <button className="login-btn cursor-pointer" key={id} onClick={() =>{
+             <div className="flex justify-center mb-4">
+             <button  className="border-2 rounded-3xl bg-amber-300 p-3 shadow-sm" key={id} onClick={() =>{
        navigateUrl(`/restaurant/${id}`)
     }}>View details {id}</button>
              </div>

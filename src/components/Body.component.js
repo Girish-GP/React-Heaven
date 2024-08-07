@@ -79,25 +79,25 @@ if(!onlineStatus){
 }
 //Conditional Rendering
   return dataCopy?.length ? (
-    <div id="app-body" className="mt-8">
-    <div className="w-96 border-2 flex items-center align-middle">
-        <div className="w-96">
-          <input className="res-search-input-main" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
+    <div id="app-body" className="mt-8 flex items-center flex-col gap-4">
+    <div className="w-4/12 border-2 flex items-center align-middle h-10 rounded-full">
+        <div className="w-full flex items-center border-none mx-6">
+          <input placeholder="Search" className="w-11/12 border-none outline-offset-0" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
           {inputValue && (
-          <span className="cursor-pointer"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
+          <span className="cursor-pointer flex items-center"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
         
       )}
         </div>
-        <button onClick={searchForRes}><MaterialIcon icon="search" />
+        <button className="flex items-center px-4" onClick={searchForRes}><MaterialIcon icon="search" />
       </button> 
     </div>
-    <div className="filter">
-      <button className="filter-btn" onClick={filter}>Top Rated button</button>
-      <button className="reset-btn" onClick={()=>{
+    <div className="flex gap-4">
+      <button className="border-2 rounded-3xl bg-cyan-300 p-3 shadow-sm" onClick={filter}>Top Rated</button>
+      <button className="border-2 rounded-3xl bg-teal-100 p-3 shadow-sm" onClick={()=>{
         setDataCopy(data)
       }}>Reset</button>
     </div>
-    <div className="res-container">
+    <div className="flex flex-wrap gap-8 justify-between px-8 py-8">
             {       
           
                     dataCopy.map((obj)=>{
@@ -109,7 +109,7 @@ if(!onlineStatus){
     </div>
   ): (
     <div className="main-body">
-       <div className="res-container">
+       <div className="flex">
       
         {
          generateShimmer()
