@@ -13,7 +13,7 @@ export const RestaurantCards = (props) => {
         <button  className="shadow-sm" key={id} onClick={() =>{
        navigateUrl(`/restaurant/${id}`)
     }}>
-        <div className="w-72 h-96 bg-orange-100 rounded-3xl">
+        <div className="bg-orange-100 rounded-3xl">
              <img className="rounded-3xl h-2/3 w-full" src={CDN_URl+cloudinaryImageId}></img>
              <div className="flex flex-col px-4 gap-1 mt-2">
                 
@@ -38,24 +38,16 @@ export const RestaurantCards = (props) => {
 )
 }
 
-const RestaurantCards2 = (props) => {
-       const { imgLink,title,rating,cusine,time} = props;
-
-        return(
-        <div className="res-cards">
-                <img src={imgLink}></img>
-                <div className="res-cards-main-section">
-                        <p>{title}</p>
-                        <p>{rating}<span>&#9734;</span> </p>
-                </div>
-                <div className="res-cards-main-section">
-                        <p>{cusine}</p>
-                </div>
-                <div className="res-cards-main-section">
-                        <p>{time}</p>
-                </div>
-        </div>
-)
+//Higher order component 
+export const RestaurantCardsEnhanced = (RestaurantCards) => {
+        return (props)=>{
+                return (
+                        < div className="relative">
+                        <label className="border-2 rounded-1xl bg-green-300 p-1 absolute top-0 left-0">Open</label>
+                        <RestaurantCards resData={props?.resData}/>
+                        </div>
+                    )   
+                
+        } 
 }
 
-export default RestaurantCards

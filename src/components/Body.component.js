@@ -1,4 +1,4 @@
-import { RestaurantCards } from "./RestuarantCards";
+import { RestaurantCards ,RestaurantCardsEnhanced} from "./RestuarantCards";
 import ShimmerComponent from "./Shimmer.component";
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 // import resList from "../utils/mock-json";
@@ -21,6 +21,8 @@ export const BodyComponent = () =>{
   let onlineStatus = useOnlineStatus();
   
   const navigate = useNavigate();
+
+  const OpenedRestuarantCards = RestaurantCardsEnhanced(RestaurantCards)
   
   useEffect(()=>{
     console.log("Use effect called.")
@@ -60,6 +62,7 @@ export const BodyComponent = () =>{
     setData(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setDataCopy(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     console.log(dataCopy)
+    console.log(dataCopy,"here data copy")
   }catch(error){
     console.log(error)
   }
@@ -74,6 +77,7 @@ const generateShimmer = ()=>{
   return components;
 }
 
+
 if(!onlineStatus){
   return <ErrorComponent/>
 }
@@ -82,7 +86,7 @@ if(!onlineStatus){
     <div id="app-body" className="mt-8 flex items-center flex-col gap-4">
     <div className="w-4/12 border-2 flex items-center align-middle h-10 rounded-full">
         <div className="w-full flex items-center border-none mx-6">
-          <input placeholder="Search" className="w-11/12 border-none outline-offset-0" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
+          <input placeholder="Search" className="w-11/12 border-none outline-0" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
           {inputValue && (
           <span className="cursor-pointer flex items-center"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
         
@@ -97,11 +101,18 @@ if(!onlineStatus){
         setDataCopy(data)
       }}>Reset</button>
     </div>
-    <div className="flex flex-wrap gap-8 justify-between px-8 py-8">
+    <div className="flex flex-wrap justify-between px-8 py-8">
             {       
-          
+                   
                     dataCopy.map((obj)=>{
-                          return  <Link key={obj?.info?.id} to={"/restaurant/" + obj?.info?.id}><RestaurantCards  resData={obj}/></Link>
+                          return <div className="h-full w-1/4 px-2 pb-4">
+
+<Link className="h-full" key={obj?.info?.id} to={"/restaurant/" + obj?.info?.id}>
+                            {/* if open add a label open to it */
+                              obj?.info?.isOpen ? <OpenedRestuarantCards resData={obj}/> : <RestaurantCards  resData={obj}/>
+                            }
+                            </Link>
+                          </div> 
                     })
             }
           
