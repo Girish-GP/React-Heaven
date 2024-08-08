@@ -27,8 +27,8 @@ const RestuarantViewDetails = () =>{
     const {name,avgRating,costForTwoMessage,cuisines,areaName} = dataObj ? dataObj[2]?.card?.card?.info : {};
     const menu =dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel ?? dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
     return (
-        <div className="res-details-container">
-         <div className="res-details">
+        <div className="flex justify-center h-[550px] p-8">
+         <div className="w-2/4 h-3/4 border-2 p-8 bg-slate-200 shadow-sm rounded-3xl">
             <h1>{name}</h1>
             <p>{avgRating}</p>
             <p>{costForTwoMessage}</p>

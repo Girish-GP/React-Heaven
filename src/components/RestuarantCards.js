@@ -9,8 +9,12 @@ export const RestaurantCards = (props) => {
 
     console.log(id,props?.resData?.info)
      return(
-     <div className="w-72 h-[550px] bg-orange-100 rounded-3xl">
-             <img className="rounded-3xl h-11/12" src={CDN_URl+cloudinaryImageId}></img>
+        <>
+        <button  className="shadow-sm" key={id} onClick={() =>{
+       navigateUrl(`/restaurant/${id}`)
+    }}>
+        <div className="w-72 h-96 bg-orange-100 rounded-3xl">
+             <img className="rounded-3xl h-2/3 w-full" src={CDN_URl+cloudinaryImageId}></img>
              <div className="flex flex-col px-4 gap-1 mt-2">
                 
                     <div className="flex justify-between"> 
@@ -20,13 +24,17 @@ export const RestaurantCards = (props) => {
                      <p>{cuisines?.join(", ")}</p>
                      <p>{sla?.slaString}</p>
              </div>
-             <div className="flex justify-center mb-4">
-             <button  className="border-2 rounded-3xl bg-amber-300 p-3 shadow-sm" key={id} onClick={() =>{
+             {/* <div className="flex justify-center mb-4"> */}
+             {/* <button  className="border-2 rounded-3xl bg-amber-300 p-3 shadow-sm" key={id} onClick={() =>{
        navigateUrl(`/restaurant/${id}`)
-    }}>View details {id}</button>
-             </div>
+    }}></button> */}
+             {/* </div> */}
              
      </div>
+    </button>
+        
+        </>
+     
 )
 }
 
