@@ -27,10 +27,18 @@ const RestuarantViewDetails = () =>{
     const {name,avgRating,costForTwoMessage,cuisines,areaName} = dataObj ? dataObj[2]?.card?.card?.info : {};
     const menu =dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel ?? dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
     return (
-        <div className="flex justify-center h-[550px] p-8">
-         <div className="w-2/4 h-3/4 border-2 p-8 bg-slate-200 shadow-sm rounded-3xl">
-            <h1>{name}</h1>
-            <p>{avgRating}</p>
+        <div className="flex justify-center p-8">
+         <div className="w-2/4 h-3/4 border-2 p-8 bg-slate-100 shadow-lg rounded-3xl">
+            <h1 className="font-bold text-3xl">{dataObj[0]?.card?.card?.text}</h1>
+            <div className="flex">
+                {
+                    dataObj[1]?.card?.card?.tabs?.map((obj)=>{
+                       return (<div key={obj?.id} className="border-8">{obj?.title}</div>)
+                    })
+                }
+              
+            </div>
+            <p>{dataObj[2]?.card?.card?.info?.avgRating}</p>
             <p>{costForTwoMessage}</p>
             <p>{cuisines?.join(',')}</p>
             <p>Outlet: {areaName}</p>

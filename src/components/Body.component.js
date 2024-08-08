@@ -105,9 +105,9 @@ if(!onlineStatus){
             {       
                    
                     dataCopy.map((obj)=>{
-                          return <div className="h-full w-1/4 px-2 pb-4">
+                          return <div  key={obj?.info?.id} className="h-full w-1/4 px-2 pb-4">
 
-<Link className="h-full" key={obj?.info?.id} to={"/restaurant/" + obj?.info?.id}>
+<Link className="h-full" to={"/restaurant/" + obj?.info?.id}>
                             {/* if open add a label open to it */
                               obj?.info?.isOpen ? <OpenedRestuarantCards resData={obj}/> : <RestaurantCards  resData={obj}/>
                             }
@@ -132,3 +132,12 @@ if(!onlineStatus){
 }
 
 
+// const temp = (comp)=>{
+//   return ()=>{
+//     return (<></>)
+//   }
+// }
+
+// dummy = temp(comp)
+
+// <dummy resData={ds}/>
