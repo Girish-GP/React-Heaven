@@ -28,20 +28,27 @@ const RestuarantViewDetails = () =>{
     const menu =dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.carousel ?? dataObj[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
     return (
         <div className="flex justify-center p-8">
-         <div className="w-2/4 h-3/4 border-2 p-8 bg-slate-100 shadow-lg rounded-3xl">
+         <div className="w-2/4 h-3/4 border-2 p-8 shadow-lg rounded-3xl">
             <h1 className="font-bold text-3xl">{dataObj[0]?.card?.card?.text}</h1>
-            <div className="flex">
+            <div className="flex  border-b-2 w-full mt-4 gap-2">
                 {
                     dataObj[1]?.card?.card?.tabs?.map((obj)=>{
-                       return (<div key={obj?.id} className="border-8">{obj?.title}</div>)
+                       return (<a key={obj?.id} className="cursor-pointer font-bold text-lg pe-4 border-b-4 border-b-orange-600">{obj?.title}</a>)
                     })
                 }
               
             </div>
-            <p>{dataObj[2]?.card?.card?.info?.avgRating}</p>
-            <p>{costForTwoMessage}</p>
-            <p>{cuisines?.join(',')}</p>
-            <p>Outlet: {areaName}</p>
+            <div className="border-none text-base rounded-b-3xl h-44 mt-8 w-full relative ps-4 pb-4 pe-4 box-border bg-slate-50">
+                <div className="font-bold absolute p-4 top-0 border-2 w-[calc(100%-2rem)] h-[calc(100%-1rem)] bg-white rounded-2xl">
+                 <div className="mb-2 flex gap-4"><p>{dataObj[2]?.card?.card?.info?.avgRating} ({dataObj[2]?.card?.card?.info?.totalRatingsString})</p>
+                 <p>. {costForTwoMessage}</p>
+                </div>
+                <p className="text-orange-500 mb-2 underline decoration-slice">{cuisines?.join(', ')}</p>
+                <p className="mb-2">Outlet: {areaName}</p>
+                <hr></hr>
+                </div>
+            </div>
+           
 
             <h3>Hotel Menu:</h3>
             <ol>
