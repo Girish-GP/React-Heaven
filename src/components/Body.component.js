@@ -119,8 +119,11 @@ if(!onlineStatus){
     </div>
     </div>
   ): (
-    <div className="main-body">
-       <div className="flex">
+    <div id="app-body" className="mt-8 flex items-center flex-col gap-4">
+       <div className="w-4/12 border-2 flex items-center align-middle h-10 rounded-full bg-gray-200">  
+       </div>
+       <div className="w-full h-full flex flex-wrap justify-between px-8 py-8">
+
       
         {
          generateShimmer()

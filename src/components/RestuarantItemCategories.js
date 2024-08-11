@@ -9,7 +9,7 @@ const RestuarantItemCategories = (props)=>{
             <div className="w-full h-3 bg-slate-200"></div>
             <button onClick={()=>{
                 setCategoriesClicked(!categoriesClicked)
-            }}><div className="font-bold text-lg px-3">{obj?.card?.card?.title}</div></button>
+            }}><div className="text-left font-bold text-lg px-3">{obj?.card?.card?.title}</div></button>
             {
                 categoriesClicked ? <RestuarantSubItemCategories subCategoriesList={subCategoriesList}/> : ''
             }

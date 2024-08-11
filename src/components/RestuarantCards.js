@@ -24,11 +24,6 @@ export const RestaurantCards = (props) => {
                      <p>{cuisines?.join(", ")}</p>
                      <p>{sla?.slaString}</p>
              </div>
-             {/* <div className="flex justify-center mb-4"> */}
-             {/* <button  className="border-2 rounded-3xl bg-amber-300 p-3 shadow-sm" key={id} onClick={() =>{
-       navigateUrl(`/restaurant/${id}`)
-    }}></button> */}
-             {/* </div> */}
              
      </div>
     </button>
