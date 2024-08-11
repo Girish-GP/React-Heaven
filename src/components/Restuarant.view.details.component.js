@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import useResViewData from "../utils/useResViewData"
+import RestuarantItemCategories from "./RestuarantItemCategories"
 const RestuarantViewDetails = () =>{
     
     const {resId} = useParams()
@@ -71,12 +72,7 @@ const RestuarantViewDetails = () =>{
             <div className="mt-4 w-full">
                {
                 itemCategoriesList?.map((obj)=>{
-                    return (
-                        <div className="w-full flex flex-col gap-3 mt-4">
-                            <div className="w-full h-3 bg-slate-200"></div>
-                            <div className="font-bold text-lg px-3">{obj?.card?.card?.title}</div>
-                        </div>
-                    )
+                  return <RestuarantItemCategories key={obj?.id} resItemData={obj}/>
                 })
                }
             </div>
