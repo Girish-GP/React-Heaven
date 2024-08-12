@@ -13,17 +13,13 @@ const RestuarantItemCategories = (props)=>{
             <div className="flex justify-between cursor-pointer" onClick={()=>{
                 setCategoriesClicked(!categoriesClicked)
             }}>
-                <div className="text-left font-bold text-lg px-3" onClick={()=>{
-                setCategoriesClicked(!categoriesClicked)
-            }}>{obj?.card?.card?.title}</div>
-                <div className="px-3" onClick={()=>{
-                setCategoriesClicked(!categoriesClicked)
-            }}>
+                <div className="text-left font-bold text-lg px-3 flex">{obj?.card?.card?.title}<p className="ps-1">({subCategoriesList?.length})</p></div>
+                <div className="px-3">
                  {
-                   categoriesClicked &&  <MaterialIcon icon="expand_more"/>
+                   !categoriesClicked &&  <MaterialIcon icon="expand_more"/>
                  }
                  {
-                   !categoriesClicked &&  <MaterialIcon icon="expand_less"/>
+                   categoriesClicked &&  <MaterialIcon icon="expand_less"/>
                  }
                 </div>
             </div>
