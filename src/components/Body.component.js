@@ -85,15 +85,16 @@ if(!onlineStatus){
   return dataCopy?.length ? (
     <div id="app-body" className="mt-8 flex items-center flex-col gap-4">
     <div className="w-4/12 border-2 flex items-center align-middle h-10 rounded-full">
-        <div className="w-full flex items-center border-none mx-6">
-          <input placeholder="Search" className="w-11/12 border-none outline-0" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
+        <div className="w-10/12 flex items-center border-none ms-6">
+          <input placeholder="Search" className="w-full border-none outline-0" id="search-input" type="text" value={inputValue} onChange={inputValueChange}></input>
           {inputValue && (
           <span className="cursor-pointer flex items-center"><MaterialIcon icon="close" onClick={handleIconClick} /></span>
         
       )}
         </div>
-        <button className="flex items-center px-4" onClick={searchForRes}><MaterialIcon icon="search" />
-      </button> 
+        <button className="flex items-center justify-center w-2/12" onClick={searchForRes}><MaterialIcon icon="search" />
+        </button>
+
     </div>
     <div className="flex gap-4">
       <button className="border-2 rounded-3xl bg-cyan-300 p-3 shadow-sm" onClick={filter}>Top Rated</button>

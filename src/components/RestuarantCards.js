@@ -13,7 +13,6 @@ export const RestaurantCards = (props) => {
         <button  className="shadow-lg bg-orange-100 rounded-3xl hover:border-2 border-red-800 m-1" key={id} onClick={() =>{
        navigateUrl(`/restaurant/${id}`)
     }}>
-        <div className="">
              <img className="rounded-3xl h-2/3 w-full" src={CDN_URl+cloudinaryImageId}></img>
              <div className="flex flex-col px-4 gap-1 mt-2">
                 
@@ -25,7 +24,6 @@ export const RestaurantCards = (props) => {
                      <p>{sla?.slaString}</p>
              </div>
              
-     </div>
     </button>
         
         </>

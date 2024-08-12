@@ -51,7 +51,7 @@ const RestuarantViewDetails = () =>{
                 <p className="mb-2 text-sm">Outlet:<span className="px-2">{areaName}</span></p>
                 <p className="mb-2 text-sm">{sla?.slaString}</p>
                 <hr></hr>
-                <p className="mt-2 font-medium">{feeDetails?.message}</p>
+                <p className="mt-2 font-medium">{feeDetails?.message?.replace(/<\/?b>/g, "")}</p>
                 </div>
             </div>
 
