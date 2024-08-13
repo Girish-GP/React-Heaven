@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom"
 import useResViewData from "../utils/useResViewData"
 import RestuarantItemCategories from "./RestuarantItemCategories"
+import { useState } from "react"
 const RestuarantViewDetails = () =>{
     
     const {resId} = useParams()
     // const [dataObj,setData]=useState(null);
 
    const dataObj = useResViewData(resId) //custom hook which will fetch the data for specific restaurant
+
+   const [showIndex,setShowIndex]=useState(null)
 
     //Below used in custom hook
     // useEffect(()=>{
@@ -60,7 +63,7 @@ const RestuarantViewDetails = () =>{
                     {
                         offersList2?.map((obj)=>{
                             return (
-                                <div className="w-1/3 h-16 rounded-2xl border-2 p-2">
+                                <div key={obj?.info?.header} className="w-1/3 h-16 rounded-2xl border-2 p-2">
                                     <p className="font-bold">{obj?.info?.header}</p>
                                     <p className="font-light">{obj?.info?.couponCode}</p>
                                 </div>
@@ -70,9 +73,12 @@ const RestuarantViewDetails = () =>{
                 </div>
            
             <div className="mt-4 w-full">
+                {/* Controlled component */}
                {
-                itemCategoriesList?.map((obj)=>{
-                  return <RestuarantItemCategories key={obj?.id} resItemData={obj}/>
+                itemCategoriesList?.map((obj,index)=>{
+                  return <RestuarantItemCategories key={obj?.card?.card?.title} resItemData={obj} showItem={index===showIndex && true} setShowIndex={(val)=>{
+                   return setShowIndex(val? null:index)
+                  }}/>
                 })
                }
             </div>

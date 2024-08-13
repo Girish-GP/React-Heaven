@@ -6,7 +6,7 @@ const RestuarantSubItemCategories = (props)=>{
     {
         subCategoriesList?.filter(obj => obj?.card?.hideRestaurantDetails)?.map((obj2)=>{
            return (
-            <div className="p-4 border-b-2 flex justify-between w-full h-full">
+            <div key={obj2?.card?.info?.name} className="p-4 border-b-2 flex justify-between w-full h-full">
               <div className="font-medium flex flex-col gap-2">
                 <p className="text-lg">{obj2?.card?.info?.name ?? null}</p>
                 <p>{obj2?.card?.info?.price/100 ?? null} {obj2?.card?.info?.offerTags? obj2?.card?.info?.offerTags[0]?.title:'' ?? null}  {obj2?.card?.info?.offerTags? obj2?.card?.info?.offerTags[0]?.subTitle:'' ?? null}</p>
@@ -18,14 +18,14 @@ const RestuarantSubItemCategories = (props)=>{
               <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300">
                 ADD
               </div>
-            </div>
+              </div>
 
             </div>
            )
-         ?? null})
-        ?? null}</>
+         })
+        }</>
        
     )
- ?? null}
+}
 
 export default RestuarantSubItemCategories;

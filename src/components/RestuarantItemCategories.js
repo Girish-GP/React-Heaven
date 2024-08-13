@@ -4,15 +4,17 @@ import MaterialIcon from 'material-icons-react';
 
 const RestuarantItemCategories = (props)=>{
     const obj = props?.resItemData;
-    const [categoriesClicked,setCategoriesClicked]= useState(false)
+    const categoriesClicked = props?.showItem;
+    const setShowIndex = props?.setShowIndex;
+    // const [categoriesClicked,setCategoriesClicked]= useState(false)
     const subCategoriesList = obj?.card?.card?.itemCards;
-
+    
     return (
-        <div className="w-full flex flex-col gap-3 mt-4">
+        <div className="w-full flex flex-col gap-3 mt-4 shadow-md pb-2">
             <div className="w-full h-3 bg-slate-200"></div>
             <div className="flex justify-between cursor-pointer" onClick={()=>{
-                setCategoriesClicked(!categoriesClicked)
-            }}>
+                categoriesClicked ? setShowIndex(true) : setShowIndex(false)
+    }} >
                 <div className="text-left font-bold text-lg px-3 flex">{obj?.card?.card?.title}<p className="ps-1">({subCategoriesList?.length})</p></div>
                 <div className="px-3">
                  {
@@ -24,7 +26,7 @@ const RestuarantItemCategories = (props)=>{
                 </div>
             </div>
             {
-                categoriesClicked ? <RestuarantSubItemCategories subCategoriesList={subCategoriesList}/> : ''
+                categoriesClicked ? <RestuarantSubItemCategories key={`${obj?.card?.card?.title}'-subCategory'}` } subCategoriesList={subCategoriesList}/> : ''
             }
             
         </div>
