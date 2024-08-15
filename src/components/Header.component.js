@@ -1,7 +1,8 @@
 import { LOGO_URL } from "../utils/constants"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 let isLoggedIn = false;
 let tex = "Login"
 export const HeaderComponent = () =>{
@@ -13,7 +14,7 @@ export const HeaderComponent = () =>{
     // isLoggedIn ? tex = "Logout" : tex = "Login" Here normal js varible will be updated but UI wil not be rendered
   }
   const onlineStatus = useOnlineStatus();
-
+  const contextData = useContext(UserContext)
   return (
     <div id="app-header" className="flex px-32 border-b-2 shadow-lg justify-between">
       <div className="logo-container">
@@ -28,6 +29,7 @@ export const HeaderComponent = () =>{
                <li><Link to="/contact-us">Contacts</Link></li>
                <li><Link to="/cart">Cart</Link></li>
                <li><Link to="/grocery">Grocery</Link></li>
+               <li>{loginText?.toLowerCase() === 'logout' && contextData?.loggedInUser}</li>
                <li><button className="border-2 rounded-2xl bg-cyan-300 pt-1 pb-1 px-3 py-3 shadow-sm" onClick={login}>{loginText}</button></li>
         </ul>
        

@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { CDN_URl } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 export const RestaurantCards = (props) => {
 
     const navigateUrl = useNavigate();
 
     const { id,cloudinaryImageId,name,avgRating,cuisines,sla} = props?.resData?.info;
-
+  
+    const {loggedInUser}=useContext(UserContext)
     console.log(id,props?.resData?.info)
      return(
         <>
@@ -22,6 +24,7 @@ export const RestaurantCards = (props) => {
                        </div>
                      <p>{cuisines?.join(", ")}</p>
                      <p>{sla?.slaString}</p>
+                     {/* <p>LoggedIn User: {loggedInUser}</p> */}
              </div>
              
     </button>
