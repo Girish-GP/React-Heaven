@@ -1,4 +1,4 @@
-import React,{lazy,Suspense} from "react"
+import React,{lazy,Suspense, useEffect, useState} from "react"
 import ReactDOM from "react-dom/client"
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 import { HeaderComponent } from "./components/Header.component"
@@ -10,20 +10,39 @@ import CardComponent from "./components/cart.component";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import ErrorComponent from "./components/Error.component";
 import RestuarantViewDetails from "./components/Restuarant.view.details.component";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import('./components/Grocery'));
 // console.log(Grocery)
-const AppLayout = () => (
-        <div id="app-layout">
+const AppLayout = () => {
+  
+  const [userName,setUserName]=useState('');
+
+  //make authentication call
+  useEffect(()=>{
+    const data = {
+      name: "Girish Parulekar"
+    }
+    // setUserName(data?.name)
+    setUserName('')
+  },[])
+  return (
+<UserContext.Provider value={{loggedInUser:userName, setUserName:(val)=> setUserName(val)}}>
+<div id="app-layout">
           {/* Header */}
+          {/* <UserContext.Provider value={{loggedInUser:'Elon Musk'}}> */}
+
           <HeaderComponent />
+          {/* </UserContext.Provider> */}
           {/* Dynamic Rendering */}
           <Outlet/>
           {/* Footer */}
           <FooterComponent />
         </div>
-)
+</UserContext.Provider>
+        
+)}
 
 const appRoutes = createBrowserRouter([
   {

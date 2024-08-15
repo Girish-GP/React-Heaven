@@ -17,9 +17,9 @@ const AboutUsComponent = () =>{
         role:"Frontend Web Developer"
     }
     return (
-        <div>
-              <h1>About Team</h1>
-              <div className="user_container_main">
+        <div className="p-4 mt-2">
+              <h1 className="font-bold text-2xl">About Team</h1>
+              <div className="flex gap-4">
                   
                   {/* {
                    [1,2,3,4,5].map((obj)=>{

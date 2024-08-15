@@ -3,14 +3,22 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import UserContext from "../utils/UserContext";
 let isLoggedIn = false;
 let tex = "Login"
 export const HeaderComponent = () =>{
   console.log("Header Render")
   const [loginText,setLoginText]=useState('Login');
+  const userContext = useContext(UserContext)
   const login = () =>{
     isLoggedIn = !isLoggedIn;
-    isLoggedIn ? setLoginText("Logout") : setLoginText("Login")
+    if(isLoggedIn){
+      setLoginText("Logout")
+      userContext.setUserName('Girish P')
+    } else {
+      setLoginText("Login")
+      userContext.setUserName('')
+    }
     // isLoggedIn ? tex = "Logout" : tex = "Login" Here normal js varible will be updated but UI wil not be rendered
   }
   const onlineStatus = useOnlineStatus();
