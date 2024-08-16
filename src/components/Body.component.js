@@ -92,7 +92,7 @@ if(!onlineStatus){
         
       )}
         </div>
-        <button className="flex items-center justify-center w-2/12" onClick={searchForRes}><MaterialIcon icon="search" />
+        <button className="flex items-center justify-center ps-2" onClick={searchForRes}><MaterialIcon icon="search" />
         </button>
 
     </div>
@@ -102,13 +102,13 @@ if(!onlineStatus){
         setDataCopy(data)
       }}>Reset</button>
     </div>
-    <div className="flex flex-wrap justify-between px-8 py-8">
+    <div className="flex flex-wrap px-8 py-8 items-stretch">
             {       
                    
                     dataCopy.map((obj)=>{
-                          return <div  key={obj?.info?.id} className="h-full w-1/4 px-2 pb-4">
+                          return <div  key={obj?.info?.id} className="w-1/4 px-2 pb-4">
 
-<Link className="h-full" to={"/restaurant/" + obj?.info?.id}>
+<Link className="h-full block" to={"/restaurant/" + obj?.info?.id}>
                             {/* if open add a label open to it */
                               obj?.info?.isOpen ? <OpenedRestuarantCards resData={obj}/> : <RestaurantCards  resData={obj}/>
                             }

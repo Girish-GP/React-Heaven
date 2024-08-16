@@ -2,6 +2,7 @@
 
 
 import UserContext from "../utils/UserContext";
+import DummyContext from "../utils/DummyContext"
 import React from "react";
 class UserClass extends React.Component{
   
@@ -63,7 +64,11 @@ class UserClass extends React.Component{
           <p>loggedIn User :<UserContext.Consumer>
            {(data)=> data?.loggedInUser}
           </UserContext.Consumer></p>
-          
+          <p>
+            <DummyContext.Consumer>
+              {(data)=> data?.project}
+            </DummyContext.Consumer>
+          </p>
        </div>
         <div  className="flex gap-2 justify-center">
           <button className="border-none bg-gray-200 shadow-lg w-12 p-1" onClick={

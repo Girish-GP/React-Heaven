@@ -11,6 +11,7 @@ import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import ErrorComponent from "./components/Error.component";
 import RestuarantViewDetails from "./components/Restuarant.view.details.component";
 import UserContext from "./utils/UserContext";
+import DummyContext from "./utils/DummyContext";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import('./components/Grocery'));
@@ -38,7 +39,9 @@ const AppLayout = () => {
           {/* Dynamic Rendering */}
           <Outlet/>
           {/* Footer */}
-          <FooterComponent />
+          <DummyContext.Provider value={{project:'test'}}>
+            <FooterComponent />
+          </DummyContext.Provider>  
         </div>
 </UserContext.Provider>
         
