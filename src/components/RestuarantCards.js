@@ -12,10 +12,12 @@ export const RestaurantCards = (props) => {
     const {loggedInUser}=useContext(UserContext)
 
     const {project} = useContext(DummyContext)
+
+    const {hasLabel} = props;
     console.log(id,props?.resData?.info)
      return(
         <>
-        <button  className="shadow-lg bg-orange-100 rounded-3xl h-full w-full flex flex-col items-start hover:scale-105 hover:shadow-md transition-all" key={id} onClick={() =>{
+        <button  className={`shadow-lg bg-orange-100 rounded-3xl h-full w-full flex flex-col items-start ${hasLabel? '':'hover:scale-95 hover:shadow-md transition-all' }`} key={id} onClick={() =>{
        navigateUrl(`/restaurant/${id}`)
     }}>
              <img className="rounded-3xl h-2/3 w-full" src={CDN_URl+cloudinaryImageId}></img>
@@ -25,11 +27,11 @@ export const RestaurantCards = (props) => {
                         <h3 className="text-xl font-bold m-0 text-left leading-tight">{name}</h3>                 
                         <div className="ms-auto leading-tight pt-[0.25rem]">{avgRating}<span>&#9734;</span> </div>
                 </div>
-                <div className="text-left">
-                <p>{cuisines?.join(", ")}</p>
-                <p>{sla?.slaString}</p>
+                <div className="text-left mt-2">
+                <p className="mb-1">{cuisines?.join(", ")}</p>
+                <p className="mb-1">{sla?.slaString}</p>
                 {/* <p>LoggedIn User: {loggedInUser}</p> */}
-                <p>Project: {project}</p>
+                <p className="mb-1">Project: {project}</p>
                 </div>
              </div>
              
@@ -44,9 +46,9 @@ export const RestaurantCards = (props) => {
 export const RestaurantCardsEnhanced = (RestaurantCards) => {
         return (props)=>{
                 return (
-                        <div className="relative h-full">
+                        <div className="relative h-full hover:scale-95 hover:shadow-md transition-all rounded-3xl">
                         <label className="rounded-1xl bg-green-300 p-1 absolute top-0 left-0 rounded-tl-xl">Open</label>
-                        <RestaurantCards resData={props?.resData}/>
+                        <RestaurantCards resData={props?.resData} hasLabel="true"/>
                         </div>
                     )   
                 

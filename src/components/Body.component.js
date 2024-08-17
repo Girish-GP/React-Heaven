@@ -102,11 +102,11 @@ if(!onlineStatus){
         setDataCopy(data)
       }}>Reset</button>
     </div>
-    <div className="flex flex-wrap px-8 py-8 items-stretch">
+    <div className="flex flex-wrap ps-32 pe-32 mt-8 items-stretch">
             {       
                    
                     dataCopy.map((obj)=>{
-                          return <div  key={obj?.info?.id} className="w-1/4 px-2 pb-4">
+                          return <div  key={obj?.info?.id} className="w-1/4 px-4 mb-8">
 
 <Link className="h-full block" to={"/restaurant/" + obj?.info?.id}>
                             {/* if open add a label open to it */

@@ -10,7 +10,7 @@ const RestuarantItemCategories = (props)=>{
     const subCategoriesList = obj?.card?.card?.itemCards;
     
     return (
-        <div className="w-full flex flex-col gap-3 mt-4 shadow-md pb-2">
+        <div className="w-full flex flex-col gap-3 mt-4 shadow-sm pb-2">
             <div className="w-full h-3 bg-slate-200"></div>
             <div className="flex justify-between cursor-pointer" onClick={()=>{
                 categoriesClicked ? setShowIndex(true) : setShowIndex(false)

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import useResViewData from "../utils/useResViewData"
 import RestuarantItemCategories from "./RestuarantItemCategories"
 import { useState } from "react"
+import Shimmer2Component from "./Shimmer2.component"
 const RestuarantViewDetails = () =>{
     
     const {resId} = useParams()
@@ -24,9 +25,8 @@ const RestuarantViewDetails = () =>{
         
     // }
     if(dataObj === null) return (
-        <div className="res-details-container">
-         <div className="res-details-shimmer"></div>
-         </div>
+        <Shimmer2Component/>
+            
     )
     const {name,avgRating,costForTwoMessage,cuisines,areaName,sla,feeDetails} = dataObj ? dataObj[2]?.card?.card?.info : {};
     const offersList = dataObj ? dataObj[3]?.card?.card?.gridElements?.infoWithStyle?.offers : [];
@@ -72,7 +72,7 @@ const RestuarantViewDetails = () =>{
                     }
                 </div>
            
-            <div className="mt-4 w-full">
+            <div className="mt-8 w-full">
                 {/* Controlled component */}
                {
                 itemCategoriesList?.map((obj,index)=>{
