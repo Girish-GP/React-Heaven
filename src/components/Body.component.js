@@ -31,7 +31,7 @@ export const BodyComponent = () =>{
   
   //Filter Top Restuarant Function
   const filter = ()=>{
-      const temp = dataCopy?.filter((obj)=> Number(obj?.info?.avgRating) >= 4.3 );
+      const temp = data?.filter((obj)=> Number(obj?.info?.avgRating) >= 4.3 );
       setDataCopy(temp)
      }
   
@@ -50,7 +50,7 @@ export const BodyComponent = () =>{
     if(!inputValue){
       setDataCopy(data);
     } else {
-      const temp = dataCopy?.filter(obj =>obj?.info?.name?.replace(/\\s+/g,"")?.toLowerCase()?.includes(inputValue?.toLowerCase()));
+      const temp = data?.filter(obj =>obj?.info?.name?.replace(/\\s+/g,"")?.toLowerCase()?.includes(inputValue?.toLowerCase()));
       setDataCopy(temp)
   }
 }
