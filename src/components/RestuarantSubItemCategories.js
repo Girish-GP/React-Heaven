@@ -1,6 +1,16 @@
 import { RES_ITEM_SUB_CATEGORIES_URL} from "../utils/constants";
+import { addItem,removeItem } from "../utils/CartSlice";
+import { useDispatch } from "react-redux";
 const RestuarantSubItemCategories = (props)=>{
     const subCategoriesList = props?.subCategoriesList;
+    
+    const dispatch = useDispatch()
+
+    const addCartItems = ($event) =>{
+      //dispatch an action
+     return dispatch(addItem('drinks'))
+    }
+
     return (
     <>
     {
@@ -15,7 +25,7 @@ const RestuarantSubItemCategories = (props)=>{
               </div>
               <div className="ms-auto w-1/3 h-11/12 pb-4 relative">
                 <img className="border-2 w-full h-full rounded-3xl object-cover shadow-md" src={RES_ITEM_SUB_CATEGORIES_URL + obj2?.card?.info?.imageId} alt="Subcategory" />
-                <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300">
+                <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300" onClick={addCartItems}>
                   ADD
                 </div>
               </div>
