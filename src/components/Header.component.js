@@ -28,7 +28,7 @@ export const HeaderComponent = () =>{
 
   //Subscribing to the store using selector
  const cartItems = useSelector((store)=> store?.cart?.items)
-
+ console.log('Cart Items',cartItems)
   return (
     <div id="app-header" className="flex px-32 border-b-2 shadow-lg justify-between">
       <div className="logo-container">
