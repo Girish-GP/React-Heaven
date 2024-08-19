@@ -1,25 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit"
 
 const CartSlice = createSlice({
     name: 'cart',
     initialState:{
-        items: ['burger','pizza']
+        items: ['burger']
     },
     reducers:{
-        addItem: (state,action)=>{
-            //mutating the state over here
-           state?.items?.push(action?.payload)
+        addCartItem: (state,action)=>{
+            state?.items?.push(action?.payload)
         },
-        removeItem: (state,action)=>{
+        removeCartItem: (state)=>{
             state?.items?.pop()
         },
-        clearCart:(state)=>{
+        clearCartItems: (state)=>{
             state.items.length = 0
+            //there is a reason why we donts do state.items = []
         }
     }
 })
 
-export const {addItem,removeItem,clearCart} = CartSlice?.actions;
-
+export const {addCartItem,removeCartItem,clearCartItems} = CartSlice?.actions;
 
 export default CartSlice?.reducer;

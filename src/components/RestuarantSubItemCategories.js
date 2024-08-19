@@ -1,5 +1,5 @@
 import { RES_ITEM_SUB_CATEGORIES_URL} from "../utils/constants";
-import { addItem,removeItem } from "../utils/CartSlice";
+import { addCartItem,removeCartItem } from "../utils/CartSlice";
 import { useDispatch } from "react-redux";
 const RestuarantSubItemCategories = (props)=>{
     const subCategoriesList = props?.subCategoriesList;
@@ -8,7 +8,7 @@ const RestuarantSubItemCategories = (props)=>{
 
     const addCartItems = ($event) =>{
       //dispatch an action
-     return dispatch(addItem('drinks'))
+     return dispatch(addCartItem('drinks'))
     }
 
     return (
