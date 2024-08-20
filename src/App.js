@@ -6,7 +6,7 @@ import { BodyComponent } from "./components/Body.component"
 import FooterComponent from "./components/Footer.component"
 import AboutUsComponent from "./components/aboutUs.component";
 import ContactUsComponent from "./components/contactUs.component";
-import CardComponent from "./components/cart.component";
+import CartComponent from "./components/Cart.component";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ErrorComponent from "./components/Error.component";
 import RestuarantViewDetails from "./components/Restuarant.view.details.component";
@@ -72,7 +72,7 @@ const appRoutes = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <CardComponent />
+        element: <CartComponent />
       },
       {
         path: "/grocery",
