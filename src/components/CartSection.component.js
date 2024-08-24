@@ -16,7 +16,7 @@ const CartSectionComponent = (props) => {
     }
 
     const clearItem = (obj) => {
-        return dispatch(clearCartCartItem(obj))
+        return dispatch(clearCartItems(obj))
     }
 
    return (
