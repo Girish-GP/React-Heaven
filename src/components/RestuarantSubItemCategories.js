@@ -1,14 +1,43 @@
 import { RES_ITEM_SUB_CATEGORIES_URL} from "../utils/constants";
 import { addCartItem,removeCartItem } from "../utils/CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import MaterialIcon from 'material-icons-react';
+
 const RestuarantSubItemCategories = (props)=>{
     const subCategoriesList = props?.subCategoriesList;
     
+    const cartItemList = useSelector((store)=> store?.cart?.items)
+
     const dispatch = useDispatch()
 
-    const addCartItems = (obj) =>{    
+    const addItems = (obj) =>{    
       //dispatch an action
      return dispatch(addCartItem(obj))
+    }
+
+    const removeItem = (obj) =>{    
+      //dispatch an action
+     return dispatch(removeCartItem(obj))
+    }
+
+    const renderBasedOnCartItem = (obj2) => {
+     
+      //check if item is already present inside the cart
+      const existingItem = cartItemList?.find(objItem => objItem?.itemData?.card?.info?.id === obj2?.card?.info?.id)
+      
+      if(existingItem){
+        return (
+          <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300" onClick={()=>addItems(obj2)}>
+          ADD
+        </div>
+        )
+      } else {
+        return (
+       
+          <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300"><span className="cursor-pointer" onClick={()=> addItems(obj2)}><MaterialIcon icon="add"/></span><span>{obj2?.itemCount}</span><span className="cursor-pointer" onClick={()=> removeItem(obj2)}><MaterialIcon icon="remove"/></span></div>
+)
+      }
+       
     }
 
     return (
@@ -25,9 +54,10 @@ const RestuarantSubItemCategories = (props)=>{
               </div>
               <div className="ms-auto w-1/3 h-11/12 pb-4 relative">
                 <img className="border-2 w-full h-full rounded-3xl object-cover shadow-md" src={RES_ITEM_SUB_CATEGORIES_URL + obj2?.card?.info?.imageId} alt="Subcategory" />
-                <div className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300" onClick={()=>addCartItems(obj2)}>
-                  ADD
-                </div>
+                {
+                  renderBasedOnCartItem(obj2)
+                }
+
               </div>
 
             </div>
