@@ -1,23 +1,32 @@
 import { useSelector } from "react-redux";
 import CartSectionComponent from "./CartSection.component";
+import { Link } from "react-router-dom";
+import { EMPRT_CART_URL } from "../utils/constants";
+
 const CartComponent = () => {
   
     const cartData = useSelector((store)=> store?.cart?.items);
-           return (
+           return  (
             <div className="flex justify-center items-center flex-col mt-8">
                 <div  className="font-bold text-3xl text-red-400 mb-2">
                     YOUR CART
                 </div>
-                <hr className="mb-2 border-b-2"></hr>
-                 {
+               
+                 { cartData?.length ? 
                 cartData.map((obj)=>{
                     
                     return <CartSectionComponent key={obj?.itemData?.card?.info?.name} obj={obj}/>
-                })
-            }
+                }) : (
+                    <div className="w-2/4 h-full shadow-sm p-8 flex flex-col items-center">
+                        <img className="w-2/4" src={EMPRT_CART_URL} alt="cart empty"></img>
+                    <p className="text-xl mt-4 font-medium">Your cart is empty</p>
+                    <p className="text-sm mt-2 mb-8">You can go to home page to view more restaurants</p>
+                    <Link className="text-xl font-bold bg-red-400 text-white rounded-sm p-2" to="/" >SEE RESTUARANTS NEAR YOU</Link>
+                </div>   
+                )
+               }
             </div>
            )
-        
         
 }
 
