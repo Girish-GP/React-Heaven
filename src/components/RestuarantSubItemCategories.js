@@ -6,7 +6,7 @@ import MaterialIcon from 'material-icons-react';
 const RestuarantSubItemCategories = (props)=>{
     const subCategoriesList = props?.subCategoriesList;
     
-    const cartItemList = useSelector((store)=> store?.cart?.items)
+    const cartItemList = useSelector((store)=> store?.cart?.items?.itemsList)
 
     const dispatch = useDispatch()
 

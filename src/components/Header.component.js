@@ -27,7 +27,7 @@ export const HeaderComponent = () =>{
   const contextData = useContext(UserContext);
 
   //Subscribing to the store using selector
- const cartItems = useSelector((store)=> store?.cart?.items)
+ const cartItems = useSelector((store)=> store?.cart?.items?.itemsList)
  console.log('Cart Items',cartItems)
   return (
     <div id="app-header" className="flex px-32 border-b-2 shadow-lg justify-between">

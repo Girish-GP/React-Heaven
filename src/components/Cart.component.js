@@ -2,16 +2,18 @@ import { useSelector } from "react-redux";
 import CartSectionComponent from "./CartSection.component";
 import { Link } from "react-router-dom";
 import { EMPRT_CART_URL } from "../utils/constants";
-
+import { useDispatch } from "react-redux";
+import { cartTotal } from "../utils/CartSlice";
 const CartComponent = () => {
-     const sum = (data)=>{
-        const sum = data?.reduce((acc,cv)=> {
-            acc = acc + cv?.itemTotalPrice;
-            return acc
-          },0)
-          return sum?.toFixed(2)
-     }
-    const cartData = useSelector((store)=> store?.cart?.items);
+    
+    const dispatch = useDispatch()
+
+    const sum = () => {
+        return dispatch(cartTotal(''))
+    }
+     
+    const cartData = useSelector((store)=> store?.cart?.items?.itemsList);
+    const cartTotalAmount = useSelector((store)=> store?.cart?.items?.cartTotal);
            return  (
             <div className="flex justify-center items-center flex-col mt-8">
                 <div  className="font-bold text-3xl text-red-400 mb-2">
@@ -34,15 +36,15 @@ const CartComponent = () => {
                 )
                }
                {
-                cartData?.length && sum(cartData) && <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-8">
+                cartData?.length ? ( sum() && <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-8">
                 <p className="font-bold text-xl">Cart Total</p>
                 <div className="mt-2 flex justify-between">
                     <p>Total</p>
                     <span>{
-                        sum(cartData)
+                        cartTotalAmount
                     }</span>
                 </div>
-               </div>  
+               </div> ) : <></>
                }
             </div>
            )
