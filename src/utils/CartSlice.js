@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { COUPON_CODES } from "./constants";
 const CartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -71,10 +72,15 @@ const CartSlice = createSlice({
       );
     },
     cartTotal: (state,action) => {
-      const sum = state?.items?.itemsList.reduce((acc,cv)=>{
+      let sum = state?.items?.itemsList.reduce((acc,cv)=>{
         acc = acc + cv?.itemTotalPrice;
         return acc
       },0)
+      const coupon = COUPON_CODES || {};
+      const discountObj = coupon?.find(obj => obj?.code == action?.payload) || 0;
+      if(discountObj){
+        sum -= sum * ((discountObj?.discount)/100);
+      }
       state.items.cartTotal = sum > 0 ? sum : 0
     }
   },

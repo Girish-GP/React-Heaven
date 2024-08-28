@@ -4,13 +4,17 @@ import { Link } from "react-router-dom";
 import { EMPRT_CART_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { cartTotal } from "../utils/CartSlice";
+import { useState } from "react";
 const CartComponent = () => {
     
     const dispatch = useDispatch()
 
-    const sum = () => {
-        return dispatch(cartTotal(''))
+    const sum = (val,event) => {
+        event?.preventDefault();
+        return dispatch(cartTotal(val))
     }
+
+    const [couponValue,setCouponValue] = useState('')
      
     const cartData = useSelector((store)=> store?.cart?.items?.itemsList);
     const cartTotalAmount = useSelector((store)=> store?.cart?.items?.cartTotal);
@@ -36,7 +40,21 @@ const CartComponent = () => {
                 )
                }
                {
-                cartData?.length ? ( sum() && <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-8">
+                cartData?.length ? 
+                ( sum('') && 
+                <div className="w-full flex">
+                     <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-8 flex gap-2">
+               <input placeholder="Enter coupon code" className="w-full border-none outline-0" id="coupon-input" type="text" value={couponValue} onChange={(event)=>{
+                event?.preventDefault()
+                setCouponValue(event.target.value)
+               }}></input>
+               <button className="border-2 bg-slate-50 rounded-lg p-4" onClick={()=>{
+                sum(couponValue);
+                setCouponValue('')
+               }}>APPLY</button>
+
+               </div> 
+                <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-8">
                 <p className="font-bold text-xl">Cart Total</p>
                 <div className="mt-2 flex justify-between">
                     <p>Total</p>
@@ -44,9 +62,12 @@ const CartComponent = () => {
                         cartTotalAmount
                     }</span>
                 </div>
-               </div> ) : <></>
+               </div> 
+               </div>) : <></>
                }
-            </div>
+               </div>
+              
+           
            )
         
 }

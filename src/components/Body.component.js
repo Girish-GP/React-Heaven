@@ -36,9 +36,9 @@ export const BodyComponent = () =>{
      }
   
 
-  const inputValueChange = (event) =>[
+  const inputValueChange = (event) =>{
    setInputValue(event.target.value)
-  ]
+  }
 
   const handleIconClick = () => {
     setDataCopy(data);
