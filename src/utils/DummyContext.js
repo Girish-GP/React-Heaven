@@ -1,6 +1,6 @@
 import { createContext } from "react";
 const DummyContext = createContext({
-    project:"Namaste React"
-})
+  project: "Namaste React",
+});
 
-export default DummyContext
+export default DummyContext;

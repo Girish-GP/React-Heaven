@@ -5,7 +5,7 @@ const CartSlice = createSlice({
   initialState: {
     items: {
       itemsList: [],
-      cartTotal: 0
+      cartTotal: 0,
     },
   },
   reducers: {
@@ -32,7 +32,7 @@ const CartSlice = createSlice({
         state?.items?.itemsList.push({
           itemData: action.payload,
           itemCount: 1,
-          itemTotalPrice: (Number(action.payload.card.info.price) / 100),
+          itemTotalPrice: Number(action.payload.card.info.price) / 100,
         });
       }
     },
@@ -71,22 +71,23 @@ const CartSlice = createSlice({
         (obj) => obj?.itemData?.card?.info?.id !== itemId
       );
     },
-    cartTotal: (state,action) => {
-      let sum = state?.items?.itemsList.reduce((acc,cv)=>{
+    cartTotal: (state, action) => {
+      let sum = state?.items?.itemsList.reduce((acc, cv) => {
         acc = acc + cv?.itemTotalPrice;
-        return acc
-      },0)
+        return acc;
+      }, 0);
       const coupon = COUPON_CODES || {};
-      const discountObj = coupon?.find(obj => obj?.code == action?.payload) || 0;
-      if(discountObj){
-        sum -= sum * ((discountObj?.discount)/100);
+      const discountObj =
+        coupon?.find((obj) => obj?.code == action?.payload) || 0;
+      if (discountObj) {
+        sum -= sum * (discountObj?.discount / 100);
       }
-      state.items.cartTotal = sum > 0 ? sum : 0
-    }
+      state.items.cartTotal = sum > 0 ? sum : 0;
+    },
   },
 });
 
-export const { addCartItem, removeCartItem, clearCartItems ,cartTotal} =
+export const { addCartItem, removeCartItem, clearCartItems, cartTotal } =
   CartSlice?.actions;
 
 export default CartSlice?.reducer;
