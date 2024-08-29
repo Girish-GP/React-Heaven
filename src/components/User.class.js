@@ -23,9 +23,9 @@ class UserClass extends React.Component {
       userName: jsonData?.userName,
       role: jsonData?.bio,
     });
-    this.interval = setInterval(() => {
-      console.log("HI");
-    }, 1000);
+    // this.interval = setInterval(() => {
+    //   console.log("HI");
+    // }, 1000);
   }
 
   componentDidUpdate(prevProps, prevState) {

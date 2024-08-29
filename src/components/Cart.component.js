@@ -52,11 +52,11 @@ const CartComponent = () => {
       )}
       {cartData?.length ? (
         <div className="w-full flex justify-center">
-          <div className="w-2/4 flex justify-between">
-            <div className="border-none mt-4 rounded-xl shadow-lg w-80 px-4 py-2 flex gap-2">
+          <div className="w-2/4 flex justify-between mt-8">
+            <div className="border-none mt-4 rounded-xl shadow-lg w-80 p-4 flex gap-2 bg-orange-100">
               <input
                 placeholder="Enter coupon code"
-                className="w-full border-none outline-0"
+                className="ps-2 w-full rounded-xl border-none outline-0 bg-gray-100"
                 id="coupon-input"
                 type="text"
                 value={couponValue}
@@ -66,7 +66,7 @@ const CartComponent = () => {
                 }}
               ></input>
               <button
-                className="border-2 bg-slate-50 rounded-lg px-2 mt-2 mb-2"
+                className="border-2 bg-slate-50 font-medium text-xl rounded-lg px-2 mt-2 mb-2"
                 onClick={() => {
                   sum(couponValue);
                   setCouponValue("");
@@ -75,7 +75,7 @@ const CartComponent = () => {
                 APPLY
               </button>
             </div>
-            <div className="border-none mt-4 rounded-xl shadow-lg w-80 px-4 py-2">
+            <div className="border-none mt-4 rounded-xl shadow-lg w-80 px-4 py-2 bg-orange-100">
               <p className="font-bold text-xl">Cart Total</p>
               <div className="mt-2 flex justify-between">
                 <p>Total</p>

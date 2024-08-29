@@ -24,14 +24,15 @@ const CartSectionComponent = (props) => {
   };
 
   return (
-    <div className="w-3/4 border-2 px-4 py-2 shadow-lg rounded-3xl h-44 flex mt-4">
+    <div className="w-2/3 border-none px-4 py-2 shadow-lg rounded-3xl h-44 flex mt-8 bg-orange-100">
       <img
         className="border-2 w-[20%] h-full rounded-3xl object-cover shadow-md"
         src={RES_ITEM_SUB_CATEGORIES_URL + obj?.itemData?.card?.info?.imageId}
         alt="Subcategory"
       />
-      <div className="w-[30%] flex justify-center items-center">
-        {obj?.itemData?.card?.info?.name}
+      <div className="w-[30%] h-full flex justify-center items-center flex-col p-4 gap-4">
+       <p className="font-bold">{obj?.itemData?.card?.info?.name}</p> 
+       <p className="w-full h-full overflow-hidden">{obj?.itemData?.card?.info?.description}</p> 
       </div>
       <div className="w-[15%] flex justify-center items-center">
         {obj?.itemTotalPrice}
