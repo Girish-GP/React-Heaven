@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice,current } from "@reduxjs/toolkit";
 import { COUPON_CODES } from "./constants";
 const CartSlice = createSlice({
   name: "cart",
@@ -10,6 +10,14 @@ const CartSlice = createSlice({
   },
   reducers: {
     addCartItem: (state, action) => {
+    
+      //Vanilla Redux --> Never Mutate state
+      //const newState = [...state]
+      //newState?.items?.push()
+      //return newState --> mandatory to return 
+
+      //REDUX Toolkit
+      //We have to mutate the state --> Behind the scene redux toolkit uses above vanilla redux method using immer library
       // Extract the item ID or any unique identifier from the payload
       const itemId =
         action?.payload?.card?.info?.id ??
@@ -61,9 +69,14 @@ const CartSlice = createSlice({
         }
       }
     },
+    //Lets say state = ['pizza']
     clearCartItems: (state, action) => {
-      //state?.items?.itemsList.length = 0
-      //there is a reason why we donts do state?.items?.itemsList = []
+      // console.log(current(state)) // ['pizza]
+      // state = []
+      // console.log(current(state)) // [] here this is a copy of state not the actual state 
+
+      //state?.items?.itemsList.length = 0 --> this will mutate the state and make it state = []
+      //there is a reason why we donts do state?.items?.itemsList = []  because here we are not actually mutating here we are adding a reference to the state 
       const itemId =
         action?.payload?.card?.info?.id ??
         action?.payload?.itemData?.card?.info?.id;
