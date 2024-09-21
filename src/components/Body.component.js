@@ -1,6 +1,6 @@
 import { RestaurantCards, RestaurantCardsEnhanced } from "./RestuarantCards";
 import ShimmerComponent from "./Shimmer.component";
-import MaterialIcon, { colorPalette } from "material-icons-react";
+// import MaterialIcon from "material-icons-react";
 // import resList from "../utils/mock-json";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -104,16 +104,17 @@ export const BodyComponent = () => {
             onChange={inputValueChange}
           ></input>
           {inputValue && (
-            <span className="cursor-pointer flex items-center">
-              <MaterialIcon icon="close" onClick={handleIconClick} />
+            <span className="cursor-pointer flex items-center"> X
+              {/* <MaterialIcon icon="close" onClick={handleIconClick} /> */}
             </span>
           )}
         </div>
         <button
+        name="Search"
           className="flex items-center justify-center ps-2"
           onClick={searchForRes}
         >
-          <MaterialIcon icon="search" />
+          Search
         </button>
       </div>
       <div className="flex gap-4">
