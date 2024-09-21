@@ -4,6 +4,8 @@ import { Provider } from "react-redux"
 import AppStore from "../../utils/AppStore"
 import { BrowserRouter } from "react-router-dom"
 import "@testing-library/jest-dom"
+import UserContext from "../../utils/UserContext";
+
 it("should load header component with login button",()=>{
   render(
     <BrowserRouter>
@@ -47,11 +49,13 @@ it("Should load with cart items",()=>{
   expect(cartItems)?.toBeInTheDocument()
 })
 
-it("Should chane login button to logout on click",()=>{
+it("Should change login button to logout on click",()=>{
   render(
     <BrowserRouter>
     <Provider store={AppStore}>
+    <UserContext.Provider>
       <HeaderComponent/>
+      </UserContext.Provider>
     </Provider>
     </BrowserRouter>
   )

@@ -15,10 +15,10 @@ export const HeaderComponent = () => {
     isLoggedIn = !isLoggedIn;
     if (isLoggedIn) {
       setLoginText("Logout");
-      userContext.setUserName("Girish P");
+      userContext?.setUserName("Girish P");
     } else {
       setLoginText("Login");
-      userContext.setUserName("");
+      userContext?.setUserName("");
     }
     // isLoggedIn ? tex = "Logout" : tex = "Login" Here normal js varible will be updated but UI wil not be rendered
   };
