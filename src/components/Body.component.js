@@ -99,6 +99,7 @@ export const BodyComponent = () => {
             placeholder="Search"
             className="w-full border-none outline-0"
             id="search-input"
+            data-testid="search-input"
             type="text"
             value={inputValue}
             onChange={inputValueChange}
@@ -110,6 +111,7 @@ export const BodyComponent = () => {
           )}
         </div>
         <button
+        id="search"
         name="Search"
           className="flex items-center justify-center ps-2"
           onClick={searchForRes}
@@ -136,7 +138,7 @@ export const BodyComponent = () => {
       <div className="flex flex-wrap ps-32 pe-32 mt-8 items-stretch">
         {dataCopy.map((obj) => {
           return (
-            <div key={obj?.info?.id} className="w-1/4 px-4 mb-8">
+            <div key={obj?.info?.id} className="w-1/4 px-4 mb-8" data-testid="resCard">
               <Link
                 className="h-full block"
                 to={"/restaurant/" + obj?.info?.id}
