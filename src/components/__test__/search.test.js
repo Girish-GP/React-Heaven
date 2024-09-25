@@ -15,6 +15,23 @@ global.fetch = jest.fn(()=>{
     })
 })
 
+
+// beforeAll(()=>{
+//   console.log("Before All Function")
+// })
+
+// beforeEach(()=>{
+//   console.log("Before each test case")
+// })
+
+// afterAll(()=>{
+//   console.log("After All test case")
+// })
+
+// afterEach(()=>{
+//  console.log("After each test case")
+// })
+
 it("Should search res list for pizza input", async () => {
     // Using act to wrap the render
     await act(async () => {

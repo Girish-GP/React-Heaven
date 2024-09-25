@@ -1,7 +1,7 @@
 import { RES_ITEM_SUB_CATEGORIES_URL } from "../utils/constants";
 import { addCartItem, removeCartItem } from "../utils/CartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import MaterialIcon from "material-icons-react";
+// import MaterialIcon from "material-icons-react";
 
 const RestuarantSubItemCategories = (props) => {
   const subCategoriesList = props?.subCategoriesList;
@@ -29,6 +29,7 @@ const RestuarantSubItemCategories = (props) => {
     if (!existingItem) {
       return (
         <div
+          data-testid="add-btn"
           className="w-20 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300"
           onClick={() => addItems(obj2)}
         >
@@ -39,11 +40,13 @@ const RestuarantSubItemCategories = (props) => {
       return (
         <div className="w-24 h-10 z-50 absolute left-1/2 transform -translate-x-1/2 translate-y-1/4 bottom-3 rounded-xl border-2 flex gap-2 items-center bg-white cursor-pointer justify-center shadow-lg font-bold text-green-700 hover:bg-gray-300">
           <span className="cursor-pointer" onClick={() => addItems(obj2)}>
-            <MaterialIcon icon="add" />
+            +
+            {/* <MaterialIcon icon="add" /> */}
           </span>
           <span>{existingItem?.itemCount}</span>
           <span className="cursor-pointer" onClick={() => removeItem(obj2)}>
-            <MaterialIcon icon="remove" />
+            {/* <MaterialIcon icon="remove" /> */}
+            -
           </span>
         </div>
       );
@@ -57,6 +60,7 @@ const RestuarantSubItemCategories = (props) => {
         ?.map((obj2) => {
           return (
             <div
+            data-testid = "foodItem"
               key={obj2?.card?.info?.name}
               className="p-4 border-b-2 flex w-full h-full"
             >

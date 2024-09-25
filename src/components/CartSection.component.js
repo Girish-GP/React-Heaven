@@ -1,5 +1,5 @@
 import { RES_ITEM_SUB_CATEGORIES_URL } from "../utils/constants";
-import MaterialIcon from "material-icons-react";
+// import MaterialIcon from "material-icons-react";
 import { useDispatch } from "react-redux";
 import {
   addCartItem,
@@ -24,7 +24,7 @@ const CartSectionComponent = (props) => {
   };
 
   return (
-    <div className="w-2/3 border-none px-4 py-2 shadow-lg rounded-3xl h-44 flex mt-8 bg-orange-100">
+    <div data-testid="cartItem" className="w-2/3 border-none px-4 py-2 shadow-lg rounded-3xl h-44 flex mt-8 bg-orange-100">
       <img
         className="border-2 w-[20%] h-full rounded-3xl object-cover shadow-md"
         src={RES_ITEM_SUB_CATEGORIES_URL + obj?.itemData?.card?.info?.imageId}
@@ -40,11 +40,13 @@ const CartSectionComponent = (props) => {
       <div className="w-[30%] flex justify-center items-center px-4 ">
         <div className="w-2/4 border-2 bg-slate-100 flex gap-4 px-4 py-1 rounded-xl">
           <span className="cursor-pointer" onClick={() => addItem(obj)}>
-            <MaterialIcon icon="add" />
+            {/* <MaterialIcon icon="add" /> */}
+            +
           </span>
           <span>{obj?.itemCount}</span>
           <span className="cursor-pointer" onClick={() => removeItem(obj)}>
-            <MaterialIcon icon="remove" />
+            {/* <MaterialIcon icon="remove" /> */}
+            -
           </span>
         </div>
       </div>
@@ -52,7 +54,8 @@ const CartSectionComponent = (props) => {
         className="w-[10%] cursor-pointer flex justify-center items-center"
         onClick={() => clearItem(obj)}
       >
-        <MaterialIcon icon="delete" />
+        {/* <MaterialIcon icon="delete" /> */}
+        Delete
       </div>
     </div>
   );
