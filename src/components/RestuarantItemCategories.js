@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RestuarantSubItemCategories from "./RestuarantSubItemCategories";
-// import MaterialIcon from "material-icons-react";
+import MaterialIcon from "material-icons-react";
 
 const RestuarantItemCategories = (props) => {
   const obj = props?.resItemData;
@@ -23,10 +23,10 @@ const RestuarantItemCategories = (props) => {
           <p className="ps-1">({subCategoriesList?.length})</p>
         </div>
         <div className="px-3">
-          {!categoriesClicked && '>'}
-          {/* {!categoriesClicked && <MaterialIcon icon="expand_more" />} */}
-          {categoriesClicked && '^'}
-          {/* {categoriesClicked && <MaterialIcon icon="expand_less" />} */}
+          {/* {!categoriesClicked && '>'} */}
+          {!categoriesClicked && <MaterialIcon icon="expand_more" />}
+          {/* {categoriesClicked && '^'} */}
+          {categoriesClicked && <MaterialIcon icon="expand_less" />}
         </div>
       </div>
       {categoriesClicked ? (
